@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Will You Be My Valentine? 💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+        }
+
+        h1 {
+            margin-top: 120px;
+            font-size: 40px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px white; }
+            to { text-shadow: 0 0 25px pink; }
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            margin: 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        #yes:hover {
+            transform: scale(1.2);
+        }
+
+        #no {
+            background: white;
+            color: #ff4d6d;
+            position: absolute;
+        }
+
+        img {
+            margin-top: 40px;
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Will You Be My Valentine? 💘</h1>
+
+<button id="yes" onclick="yesClicked()">Yes 💖</button>
+<button id="no" onmouseover="moveNo()">No 😜</button>
+
+<script>
+function yesClicked() {
+
+    document.body.innerHTML = `
+        <h1>Yayyyy!! 🤍🖤</h1>
+        <p>First Hug 🤗</p>
+        <img id="catGif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+    `;
+
+    // After 3 seconds change to kiss GIF
+    setTimeout(function() {
+        document.getElementById("catGif").src =
+        "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif";
+        document.querySelector("p").innerHTML = "Now Kiss 😘💋";
+    }, 3000);
+}
+
+function moveNo() {
+    var button = document.getElementById("no");
+    button.style.top = Math.random() * window.innerHeight + "px";
+    button.style.left = Math.random() * window.innerWidth + "px";
+}
+</script>
+
+</body>
+</html>
