@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ammu ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e8a2b0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background: #ff1493;
+            color: white;
+        }
+
+        #no {
+            background: lightgray;
+        }
+
+        img {
+            width: 220px;
+            margin-top: 20px;
+            border-radius: 20px;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .burst {
+            position: absolute;
+            font-size: 25px;
+            animation: burst 1s ease-out forwards;
+        }
+
+        @keyframes burst {
+            from {
+                transform: scale(0);
+                opacity: 1;
+            }
+            to {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card" id="mainCard">
+    <h1>Ammu, will you be my Valentine? 💖</h1>
+    <button id="yes" onclick="showLove()">Yes 💕</button>
+    <button id="no" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<script>
+
+function showLove() {
+
+    document.body.innerHTML = `
+        <div class="card">
+            <h1>Yay! 💖</h1>
+            <img src="hug.gif">
+            <h2>Ammu is mine forever 🧸💕</h2>
+        </div>
+    `;
+
+    // Falling hearts
+    setInterval(function() {
+        var heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }, 300);
+
+    // Heart burst explosion
+    for (let i = 0; i < 25; i++) {
+        let burst = document.createElement("div");
+        burst.className = "burst";
+        burst.innerHTML = "💗";
+        burst.style.left = (window.innerWidth / 2) + "px";
+        burst.style.top = (window.innerHeight / 2) + "px";
+        document.body.appendChild(burst);
+
+        setTimeout(() => {
+            burst.remove();
+        }, 1000);
+    }
+}
+
+function moveNo() {
+    var button = document.getElementById("no");
+    button.style.position = "absolute";
+    button.style.top = Math.random() * window.innerHeight + "px";
+    button.style.left = Math.random() * window.innerWidth + "px";
+}
+
+</script>
+
+</body>
+</html>
